@@ -58,7 +58,7 @@ export default function Resume() {
                             <br/><br/><br/>
                             <p className="noto-serif-resume-subtext">Verde - Personalised Carbon Footprint Tracker</p>
                             <p className="noto-serif-resume-text-bold">
-                                <a href="https://lnkd.in/gQcTEGGM" target="_blank" rel="noopener noreferrer">Monash PG Industry Expo Winner (2025)</a>
+                                <a href="https://lnkd.in/gQcTEGGM" target="_blank" rel="noopener noreferrer">Monash PG Industry Expo Winner (2025) (Click to see our project)</a>
                             </p>
                             <br/>
                             <p className="noto-serif-resume-text">
@@ -74,7 +74,7 @@ export default function Resume() {
                                 • Considered privacy principles in handling behavioural data and implemented safeguards against common web vulnerabilities.
                             </p>
                             
-                            <br/><br/>
+                            <br/><br/><br/>
                             <Grid container spacing={0} alignItems="center">
                                 <Grid item size={6.7}>
                                     <img className="img-size" src={Image1} alt="" />
@@ -92,10 +92,16 @@ export default function Resume() {
                         <Grid size={10}>
                             <h1 className="noto-serif-resume-title">Contact</h1>
                             <br/>
-                            <p className="noto-serif-resume-text"><LocalPhoneIcon className="mui-icon"/> (61) 0434321101</p>
-                            <p className="noto-serif-resume-text"><EmailIcon className="mui-icon"/> huim13a@gmail.com</p>
-                            <p className="noto-serif-resume-text"><LinkedInIcon className="mui-icon"/><a href="https://www.linkedin.com/in/sze-ming-hui-baa202225/" target="_blank" rel="noopener noreferrer"> Sze Ming (Martin) Hui</a></p>
-                            <p className="noto-serif-resume-text"><GitHubIcon className="mui-icon"/><a href="https://github.com/mmh11" target="_blank" rel="noopener noreferrer"> mmh11</a></p>
+                            <Grid container spacing={0}>
+                                <Grid size={6}>
+                                    <p className="noto-serif-resume-text"><LocalPhoneIcon className="mui-icon"/> (61) 0434321101</p>
+                                    <p className="noto-serif-resume-text"><EmailIcon className="mui-icon"/> huim13a@gmail.com</p>
+                                </Grid>
+                                <Grid size={6}>
+                                    <p className="noto-serif-resume-text"><LinkedInIcon className="mui-icon"/><a href="https://www.linkedin.com/in/sze-ming-hui-baa202225/" target="_blank" rel="noopener noreferrer"> Sze Ming (Martin) Hui</a></p>
+                                    <p className="noto-serif-resume-text"><GitHubIcon className="mui-icon"/><a href="https://github.com/mmh11" target="_blank" rel="noopener noreferrer"> mmh11</a></p>
+                                </Grid>
+                            </Grid>
                         </Grid>
                         <Grid size={10}>
                             <br/><br/><br/><br/>
@@ -146,6 +152,69 @@ export default function Resume() {
                             <p className="noto-serif-resume-text">
                                 • Support team members with reports & documentations
                             </p>
+                        </Grid>
+                        <Grid size={10}>
+                            <br/><br/><br/><br/>
+                            <h1 className="noto-serif-resume-title">Skills & Tools</h1>
+                            <br/>
+
+                            <Grid container spacing={0}>
+                                <Grid size={6}>
+                                    <p className="noto-serif-resume-text-bold">
+                                        Kali Linux
+                                    </p>
+                                    <p className="noto-serif-resume-text">
+                                        • Nmap 
+                                        <br/>
+                                        • Metasploit
+                                        <br/>
+                                        • Wireshark
+                                        <br/>
+                                        • Burpsuite
+                                    </p>
+                                    <br/>
+                                    <p className="noto-serif-resume-text-bold">
+                                        GNS3 (Network Config)
+                                    </p>
+                                    <p className="noto-serif-resume-text">
+                                        • BGP
+                                        <br/>
+                                        • VPN
+                                        <br/>
+                                        • Firewall
+                                        <br/>
+                                        • DMZ Architecture
+                                    </p>
+                                    <br/>
+                                </Grid>
+
+                                <Grid size={6}>
+                                    <p className="noto-serif-resume-text-bold">
+                                        AWS
+                                    </p>
+                                    <p className="noto-serif-resume-text">
+                                        • IAM & Cognito
+                                        <br/>
+                                        • API Gateway & WAF
+                                        <br/>
+                                        • VPC
+                                        <br/>
+                                        • Lambda & Aurora (MySQL)
+                                    </p>
+                                    <br/>
+                                    <p className="noto-serif-resume-text-bold">
+                                        Others
+                                    </p>
+                                    <p className="noto-serif-resume-text">
+                                        • Security Planning
+                                        <br/>
+                                        • Pentest Reporting & Threat Modeling
+                                        <br/>
+                                        • ReactJs & Python
+                                    </p>
+                                </Grid>
+                            </Grid>
+
                         </Grid>
                     </Grid>
                 </Grid>
