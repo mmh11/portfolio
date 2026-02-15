@@ -59,12 +59,14 @@
   background: rgba(255, 255, 255, 0.85);
   color: #000;
   z-index: 10;
+  pointer-events: none;
 }
 
 .spline-loader-text {
   color: #000;
   letter-spacing: 0.04em;
   text-transform: lowercase;
+  text-align: center;
 }
 
 .resume-div-wrap {

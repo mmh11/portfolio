@@ -7,24 +7,36 @@ import Spline from "@splinetool/react-spline";
 export default function SplineScene() {
     const [loading, setLoading] = useState(true)
     const [showSpline, setShowSpline] = useState(false)
+    const [splineLoaded, setSplineLoaded] = useState(false)
+    const [minimumDelayPassed, setMinimumDelayPassed] = useState(false)
 
     useEffect(() => {
         setLoading(true)
+        setSplineLoaded(false)
+        setMinimumDelayPassed(false)
         let idleId
         let timeoutId
+        const minimumDelayId = setTimeout(() => setMinimumDelayPassed(true), 20000)
         if ('requestIdleCallback' in window) {
             idleId = requestIdleCallback(() => setShowSpline(true), { timeout: 1000 })
         } else {
             timeoutId = setTimeout(() => setShowSpline(true), 300)
         }
         return () => {
+            clearTimeout(minimumDelayId)
             if (idleId) cancelIdleCallback(idleId)
             if (timeoutId) clearTimeout(timeoutId)
         }
     }, [])
 
+    useEffect(() => {
+        if (splineLoaded && minimumDelayPassed) {
+            setLoading(false)
+        }
+    }, [splineLoaded, minimumDelayPassed])
+
     const handleLoad = () => {
-        setTimeout(() => setLoading(false), 15000)
+        setSplineLoaded(true)
     }
 
     return(
@@ -34,6 +46,7 @@ export default function SplineScene() {
                     <CircularProgress size={32} thickness={4} sx={{ color: 'rgb(204, 158, 105)' }} />
                     <Typography variant="body2" className="spline-loader-text">
                         <p className="sour-gummy-loading">Loading scene...</p>
+                        <p className="sour-gummy-loading">Scroll down for resume & come back later</p>
                     </Typography>
                 </Box>
             ) : null}
