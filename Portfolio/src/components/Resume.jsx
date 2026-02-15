@@ -20,14 +20,10 @@ export default function Resume() {
                                 <p className="noto-serif-resume-subtext">Granted 5 Years Working VISA (485) till 2031</p>
                                 <br/>
                                 <p className="noto-serif-resume-text">
-                                    Cybersecurity graduate with a strong focus on cloud technologies and secure system design. 
-                                    Hands-on experience in penetration testing labs, 
-                                    secure application development, 
-                                    and deploying services in cloud environments. 
-                                    Passionate about identifying vulnerabilities, 
-                                    strengthening system resilience, 
-                                    and continuously developing practical security skills. 
-                                    Seeking a junior cybersecurity role where I can contribute technical capability while growing under industry mentorship.
+                                    Cybersecurity graduate with hands-on experience designing secure network architectures, 
+                                    implementing cloud-based backend services, and conducting structured penetration testing. 
+                                    Experienced in DMZ design, VPN configuration, AWS Lambda development, and security risk assessment. 
+                                    Seeking a junior cybersecurity or cloud security role to apply practical defensive and offensive security skills in production environments.
                                 </p>
                             </Grid>
                             <Grid size={10}>
