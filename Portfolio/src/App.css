@@ -290,7 +290,7 @@
 
 .paper-div {
   position: fixed;
-  left: calc(12vw + 140px);
-  bottom: calc(12vw + 20px);
+  left: calc(1vw + 12vw + 12px);
+  bottom: calc(12vw - 8px);
   z-index: 1002;
 }

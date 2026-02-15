@@ -63,7 +63,7 @@ export default function SplineScene() {
                             <CircularProgress size={32} thickness={4} sx={{ color: 'rgb(204, 158, 105)' }} />
                             <Typography variant="body2" className="spline-loader-text">
                                 <p className="sour-gummy-loading">Loading scene...</p>
-                                <p className="sour-gummy-loading">Scroll down for resume & come back later</p>
+                                <p className="sour-gummy-loading">Please stay here with me for a few seconds</p>
                             </Typography>
                         </Box>
                     ) : null}

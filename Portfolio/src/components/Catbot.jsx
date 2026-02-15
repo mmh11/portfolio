@@ -13,7 +13,7 @@ export default function Catbot() {
 
   const messages = [
     'Hi! How are you today? This is my protfolio page, have fun playing around! (Click for tips!)',
-    'You can visit my 3D space station by clicking the button in the upper right corner, but it may took a while to be loaded! (1/4)',
+    'You can visit my 3D space station by clicking the button in the upper right corner, it may took a few seconds to be loaded! (1/4)',
     'You can explore my space station by using WASD, Space and Arrows keys to control me and the camera. (2/4)',
     'You can also scroll down to read my resume detailedly! (3/4)',
     'My contact info is located below, feel free to contact my direcly for any opportunity! (4/4)'
@@ -39,6 +39,7 @@ export default function Catbot() {
     setBubbleBump(true)
     setBumpKey((prev) => prev + 1)
     setTimeout(() => setBubbleBump(false), 300)
+    setMessageIndex((prev) => (prev + 1) % messages.length)
   }
 
   const open = Boolean(anchorEl)
