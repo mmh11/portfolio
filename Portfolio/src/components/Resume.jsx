@@ -31,7 +31,7 @@ export default function Resume() {
                                 </p>
                             </Grid>
                             <Grid size={10}>
-                                <br/><br/><br/><br/><br/>
+                                <br/><br/><br/>
                                 <h1 className="noto-serif-resume-title">Recent Projects</h1>
                                 
                                 <p className="noto-serif-resume-subtext">Network Security Design & Attack Simulation</p>
