@@ -73,7 +73,7 @@ export default function Resume() {
                                 <br/><br/><br/>
                                 <p className="noto-serif-resume-subtext">Verde - Personalised Carbon Footprint Tracker</p>
                                 <p className="noto-serif-resume-text-bold">
-                                    <a href="https://lnkd.in/gQcTEGGM" target="_blank" rel="noopener noreferrer">Monash PG Industry Expo Winner (2025) (Click to see our project)</a>
+                                    <a href="https://eportfolio.monash.edu/view/view.php?t=852256f850e2a509baaf" target="_blank" rel="noopener noreferrer">Monash PG Industry Expo Winner (2025) (Click to see our project)</a>
                                 </p>
                                 <br/>
                                 <p className="noto-serif-resume-text">
