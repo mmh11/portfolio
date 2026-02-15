@@ -9,6 +9,7 @@ export default function Catbot() {
   const [messageIndex, setMessageIndex] = useState(0)
   const [bubbleBump, setBubbleBump] = useState(false)
   const [bumpKey, setBumpKey] = useState(0)
+  const [catbotClickBump, setCatbotClickBump] = useState(false)
 
   const messages = [
     'Hi! How are you today? This is my protfolio page, have fun playing around! (Click for tips!)',
@@ -29,6 +30,8 @@ export default function Catbot() {
   }
 
   const handleClick = () => {
+    setCatbotClickBump(true)
+    setTimeout(() => setCatbotClickBump(false), 260)
     setMessageIndex((prev) => (prev + 1) % messages.length)
   }
 
@@ -42,12 +45,14 @@ export default function Catbot() {
 
   return (
     <Box className="catbot-wrap" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <img
-        className="catbot-fixed"
-        src={catbot}
-        alt="Chat bot cat"
-        onClick={handleClick}
-      />
+      <div className={`catbot-click-feedback ${catbotClickBump ? 'is-clicked' : ''}`}>
+        <img
+          className="catbot-fixed"
+          src={catbot}
+          alt="Chat bot cat"
+          onClick={handleClick}
+        />
+      </div>
       {open ? (
         <div className='paper-div'>
             <Paper

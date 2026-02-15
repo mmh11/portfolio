@@ -184,7 +184,7 @@ export default function Resume() {
                                             <br/>
                                             • Firewall
                                             <br/>
-                                            • DMZ Architecture
+                                            • DMZ Design
                                         </p>
                                         <br/>
                                     </Grid>
