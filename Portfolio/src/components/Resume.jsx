@@ -7,6 +7,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Image1 from '../assets/1761372917445.jpg'
 import Image2 from '../assets/1761952471443.jpg'
 
@@ -73,7 +74,7 @@ export default function Resume() {
                                 <br/><br/><br/>
                                 <p className="noto-serif-resume-subtext">Verde - Personalised Carbon Footprint Tracker</p>
                                 <p className="noto-serif-resume-text-bold">
-                                    <a href="https://eportfolio.monash.edu/view/view.php?t=852256f850e2a509baaf" target="_blank" rel="noopener noreferrer">Monash PG Industry Expo Winner (2025) (Click to see our project)</a>
+                                    <a href="https://eportfolio.monash.edu/view/view.php?t=852256f850e2a509baaf" target="_blank" rel="noopener noreferrer">Monash PG Industry Expo Winner (2025) <OpenInNewIcon sx={{ fontSize: '25px', verticalAlign: 'text-bottom' }} /></a>
                                 </p>
                                 <br/>
                                 <p className="noto-serif-resume-text">
