@@ -1,6 +1,6 @@
 # Portfolio Website
 
-Interactive portfolio website built with React and Vite, featuring a 3D landing scene and a scrollable resume section. [sze.bio](sze.bio)
+Interactive portfolio website built with React and Vite, featuring a 3D landing scene and a scrollable resume section. [sze.bio](https://sze.bio)
 
 ## Tech Stack
 
@@ -49,4 +49,4 @@ npm run preview
 
 ## Deployment
 
-This project is deployed on Vercel as [sze.bio](sze.bio)
+This project is deployed on Vercel as [sze.bio](https://sze.bio)
