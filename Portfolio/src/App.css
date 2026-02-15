@@ -81,7 +81,7 @@
 
 .noto-serif-resume-subtext {
   font-family: "Noto Serif", serif;
-  font-size: 22px;
+  font-size: 20px;
   color: rgb(114, 114, 114);
   font-optical-sizing: auto;
   font-weight: 400;
@@ -94,7 +94,7 @@
 
 .noto-serif-resume-text {
   font-family: "Noto Serif", serif;
-  font-size: 22px;
+  font-size: 20px;
   color: rgb(54, 54, 54);
   font-optical-sizing: auto;
   font-weight: 400;
@@ -108,7 +108,7 @@
 
 .noto-serif-resume-text-nojust {
   font-family: "Noto Serif", serif;
-  font-size: 22px;
+  font-size: 20px;
   color: rgb(54, 54, 54);
   font-optical-sizing: auto;
   font-weight: 400;
@@ -121,7 +121,7 @@
 
 .noto-serif-resume-text-bold {
   font-family: "Noto Serif", serif;
-  font-size: 22px;
+  font-size: 20px;
   color: rgb(54, 54, 54);
   font-optical-sizing: auto;
   font-weight: 600;
@@ -141,7 +141,7 @@
   font-variation-settings:
     "wdth" 100;
   margin: 0;
-  font-size: 46px;
+  font-size: 44px;
 }
 
 .sour-gummy-text {
