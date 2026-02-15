@@ -1,6 +1,8 @@
-import React from "react"
+import { useState } from "react"
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid'
+import Dialog from '@mui/material/Dialog'
+import DialogContent from '@mui/material/DialogContent'
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -9,6 +11,22 @@ import Image1 from '../assets/1761372917445.jpg'
 import Image2 from '../assets/1761952471443.jpg'
 
 export default function Resume() {
+    const [previewImage, setPreviewImage] = useState(null)
+    const [isPreviewOpen, setIsPreviewOpen] = useState(false)
+
+    const handleImageOpen = (imageSrc) => {
+        setPreviewImage(imageSrc)
+        setIsPreviewOpen(true)
+    }
+
+    const handleImageClose = () => {
+        setIsPreviewOpen(false)
+    }
+
+    const handleDialogExited = () => {
+        setPreviewImage(null)
+    }
+
     return (
         <>
             <div className="resume-div-wrap">
@@ -72,13 +90,25 @@ export default function Resume() {
                                 </p>
                                 
                                 <br/><br/><br/>
-                                <Grid container spacing={0} alignItems="center">
-                                    <Grid item size={6.7}>
-                                        <img className="img-size" src={Image1} alt="" />
+                                <Grid container spacing={2} alignItems="center">
+                                    <Grid item size={{ xs: 12, md: 6.6 }}>
+                                        <img
+                                            className="img-size"
+                                            src={Image1}
+                                            alt="Image preview 1"
+                                            onClick={() => handleImageOpen(Image1)}
+                                            style={{ cursor: 'zoom-in' }}
+                                        />
                                     </Grid>
-                                    <Grid item size={0.3}/>
-                                    <Grid item size={5}>
-                                        <img className="img-size" src={Image2} alt="" />
+                                    <Grid item size={{ xs: 0, md: 0.3 }}/>
+                                    <Grid item size={{ xs: 12, md: 5 }}>
+                                        <img
+                                            className="img-size"
+                                            src={Image2}
+                                            alt="Image preview 2"
+                                            onClick={() => handleImageOpen(Image2)}
+                                            style={{ cursor: 'zoom-in' }}
+                                        />
                                     </Grid>
                             </Grid>
                                 
@@ -218,6 +248,23 @@ export default function Resume() {
                     </Grid>
                 </Box>
             </div>
+            <Dialog
+                open={isPreviewOpen}
+                onClose={handleImageClose}
+                TransitionProps={{ onExited: handleDialogExited }}
+                maxWidth="lg"
+                fullWidth
+            >
+                <DialogContent sx={{ p: 1 }}>
+                    {previewImage ? (
+                        <img
+                            src={previewImage}
+                            alt="Expanded project preview"
+                            style={{ width: '100%', height: 'auto', display: 'block' }}
+                        />
+                    ) : null}
+                </DialogContent>
+            </Dialog>
         </>
     )
 }
