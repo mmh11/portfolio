@@ -14,7 +14,7 @@ export default function Resume() {
             <div className="resume-div-wrap">
                 <Box>
                     <Grid container spacing={0}>
-                        <Grid size={7}>
+                        <Grid size={{ xs: 12, md: 7 }}>
                             <Grid size={10}>
                                 <h1 className="noto-serif-resume-title">Sze Ming (Martin) Hui</h1>
                                 <p className="noto-serif-resume-subtext">Granted 5 Years Working VISA (485) till 2031</p>
@@ -86,10 +86,10 @@ export default function Resume() {
                                     </Grid>
                             </Grid>
                                 
-                                <br/>
+                                <br/><br/><br/>
                             </Grid>
                             </Grid>
-                        <Grid size={4}>
+                        <Grid size={{ xs: 12, md: 4 }}>
                             <Grid size={10}>
                                 <h1 className="noto-serif-resume-title">Contact</h1>
                                 <br/>
