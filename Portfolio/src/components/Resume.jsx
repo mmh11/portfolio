@@ -93,17 +93,13 @@ export default function Resume() {
                             <Grid size={10}>
                                 <h1 className="noto-serif-resume-title">Contact</h1>
                                 <br/>
-                                <Grid container spacing={0}>
-                                    <Grid size={{ xs: 12, md: 6 }}>
+                                <Grid container spacing={2}>
+                                    <Grid spacing={12}>
                                         <p className="noto-serif-resume-text-nojust"><LocalPhoneIcon className="mui-icon"/> (61) 0434321101</p>
-                                    </Grid>
-                                    <Grid size={{ xs: 12, md: 6 }}>
                                         <p className="noto-serif-resume-text-nojust"><EmailIcon className="mui-icon"/> huim13a@gmail.com</p>
                                     </Grid>
-                                    <Grid size={{ xs: 12, md: 6 }}>
+                                    <Grid spacing={12}>
                                         <p className="noto-serif-resume-text-nojust"><LinkedInIcon className="mui-icon"/><a href="https://www.linkedin.com/in/sze-ming-hui-baa202225/" target="_blank" rel="noopener noreferrer"> Sze Ming (Martin) Hui</a></p>
-                                    </Grid>
-                                    <Grid size={{ xs: 12, md: 6 }}>
                                         <p className="noto-serif-resume-text-nojust"><GitHubIcon className="mui-icon"/><a href="https://github.com/mmh11" target="_blank" rel="noopener noreferrer"> mmh11</a></p>
                                     </Grid>
                                 </Grid>
