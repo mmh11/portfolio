@@ -16,7 +16,7 @@ export default function Catbot() {
     'You can visit my 3D space station by clicking the button in the upper right corner, it may took a few seconds to be loaded! (1/4)',
     'You can explore my space station by using WASD, Space and Arrows keys to control me and the camera. (2/4)',
     'You can also scroll down to read my resume detailedly! (3/4)',
-    'My contact info is located below, feel free to contact my direcly for any opportunity! (4/4)'
+    'Feel free to get in touch using the contact info direcly for any opportunity! (4/4)'
   ]
 
   const handleEnter = (event) => {
