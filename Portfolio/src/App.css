@@ -72,7 +72,7 @@
 .resume-div-wrap {
   padding-top: 10vh;
   padding-bottom: 10vh;
-  padding-left: 15vw;
+  padding-left: 10%;
 }
 
 .resume-paragraph-wrap {
@@ -81,7 +81,7 @@
 
 .noto-serif-resume-subtext {
   font-family: "Noto Serif", serif;
-  font-size: 1.5em;
+  font-size: 22px;
   color: rgb(114, 114, 114);
   font-optical-sizing: auto;
   font-weight: 400;
@@ -94,7 +94,7 @@
 
 .noto-serif-resume-text {
   font-family: "Noto Serif", serif;
-  font-size: 1.3em;
+  font-size: 22px;
   color: rgb(54, 54, 54);
   font-optical-sizing: auto;
   font-weight: 400;
@@ -106,9 +106,22 @@
   text-align: justify;
 }
 
+.noto-serif-resume-text-nojust {
+  font-family: "Noto Serif", serif;
+  font-size: 22px;
+  color: rgb(54, 54, 54);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  margin: 0;
+  margin-top: 0.5em;
+}
+
 .noto-serif-resume-text-bold {
   font-family: "Noto Serif", serif;
-  font-size: 1.3em;
+  font-size: 22px;
   color: rgb(54, 54, 54);
   font-optical-sizing: auto;
   font-weight: 600;
@@ -117,7 +130,6 @@
     "wdth" 100;
   margin: 0;
   margin-top: 0.5em;
-  text-align: justify;
 }
 
 .noto-serif-resume-title {
@@ -129,6 +141,7 @@
   font-variation-settings:
     "wdth" 100;
   margin: 0;
+  font-size: 46px;
 }
 
 .sour-gummy-text {
@@ -144,7 +157,7 @@
 
 .sour-gummy-loading {
   color: rgb(131, 101, 67);;
-  font-size: 1vw;
+  font-size: 30px;
   font-family: "Sour Gummy", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
