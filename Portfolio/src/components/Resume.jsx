@@ -22,7 +22,7 @@ export default function Resume() {
                                 Cybersecurity graduate with a strong focus on cloud technologies and secure system design. 
                                 Hands-on experience in penetration testing labs, 
                                 secure application development, 
-                                and deploying containerized services in cloud environments. 
+                                and deploying services in cloud environments. 
                                 Passionate about identifying vulnerabilities, 
                                 strengthening system resilience, 
                                 and continuously developing practical security skills. 
