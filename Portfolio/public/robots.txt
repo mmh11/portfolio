@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mmh11.github.io/Portfolio/sitemap.xml

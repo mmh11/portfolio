@@ -14,6 +14,9 @@ import Image2 from '../assets/1761952471443.jpg'
 export default function Resume() {
     const [previewImage, setPreviewImage] = useState(null)
     const [isPreviewOpen, setIsPreviewOpen] = useState(false)
+    const previewAltText = previewImage === Image1
+        ? "Verde project award graphic for Monash PG Industry Experience Expo Winner 2025"
+        : "Postgraduate Industry Experience Industry Night group photo with Verde team members"
 
     const handleImageOpen = (imageSrc) => {
         setPreviewImage(imageSrc)
@@ -53,22 +56,22 @@ export default function Resume() {
                                 <p className="noto-serif-resume-text-bold">Network Security Unit Final Assessment (2025)</p>
                                 <br/>
                                 <p className="noto-serif-resume-text">
-                                    • Designed and implemented a secure multi-campus network in GNS3, including firewalls, BGP routing, DNS, CA, Web, SMTP, and SSH servers.
+                                    &bull; Designed and implemented a secure multi-campus network in GNS3, including firewalls, BGP routing, DNS, CA, Web, SMTP, and SSH servers.
                                 </p>
                                 <p className="noto-serif-resume-text">
-                                    • Configured IPSec site-to-site and remote access VPNs with ESP encryption and validated encrypted traffic using Wireshark.
+                                    &bull; Configured IPSec site-to-site and remote access VPNs with ESP encryption and validated encrypted traffic using Wireshark.
                                 </p>
                                 <p className="noto-serif-resume-text">
-                                    • Performed BGP prefix hijacking attack simulation and implemented defensive countermeasures to mitigate traffic redirection.
+                                    &bull; Performed BGP prefix hijacking attack simulation and implemented defensive countermeasures to mitigate traffic redirection.
                                 </p>
                                 <p className="noto-serif-resume-text">
-                                    • Designed and enforced firewall policies with implicit deny rules and service-specific access controls.
+                                    &bull; Designed and enforced firewall policies with implicit deny rules and service-specific access controls.
                                 </p>
                                 <p className="noto-serif-resume-text">
-                                    • Deployed and configured Snort IDS to detect TCP port scanning and DoS attacks using custom detection rules.
+                                    &bull; Deployed and configured Snort IDS to detect TCP port scanning and DoS attacks using custom detection rules.
                                 </p>
                                 <p className="noto-serif-resume-text">
-                                    • Conducted security analysis identifying potential firewall bypass techniques and proposed architectural improvements.
+                                    &bull; Conducted security analysis identifying potential firewall bypass techniques and proposed architectural improvements.
                                 </p>
 
                                 <br/><br/><br/>
@@ -78,16 +81,16 @@ export default function Resume() {
                                 </p>
                                 <br/>
                                 <p className="noto-serif-resume-text">
-                                    • Authored a formal security plan outlining Data Flow Diagrams, risk assessment, data protection strategies, and mitigation controls.
+                                    &bull; Authored a formal security plan outlining Data Flow Diagrams, risk assessment, data protection strategies, and mitigation controls.
                                 </p>
                                 <p className="noto-serif-resume-text">
-                                    • Conducted regular penetration testing to identify vulnerabilities and implemented remediation measures.
+                                    &bull; Conducted regular penetration testing to identify vulnerabilities and implemented remediation measures.
                                 </p>
                                 <p className="noto-serif-resume-text">
-                                    • Built secure backend APIs & Lambda functions with proper input validation and user authentication & authorization to protect sensitive user data.
+                                    &bull; Built secure backend APIs & Lambda functions with proper input validation and user authentication & authorization to protect sensitive user data.
                                 </p>
                                 <p className="noto-serif-resume-text">
-                                    • Considered privacy principles in handling behavioural data and implemented safeguards against common web vulnerabilities.
+                                    &bull; Considered privacy principles in handling behavioural data and implemented safeguards against common web vulnerabilities.
                                 </p>
                                 
                                 <br/><br/><br/>
@@ -96,7 +99,7 @@ export default function Resume() {
                                         <img
                                             className="img-size"
                                             src={Image1}
-                                            alt="Image preview 1"
+                                            alt="Verde project award graphic for Monash PG Industry Experience Expo Winner 2025"
                                             onClick={() => handleImageOpen(Image1)}
                                             style={{ cursor: 'zoom-in' }}
                                         />
@@ -106,7 +109,7 @@ export default function Resume() {
                                         <img
                                             className="img-size"
                                             src={Image2}
-                                            alt="Image preview 2"
+                                            alt="Postgraduate Industry Experience Industry Night group photo with Verde team members"
                                             onClick={() => handleImageOpen(Image2)}
                                             style={{ cursor: 'zoom-in' }}
                                         />
@@ -161,24 +164,24 @@ export default function Resume() {
                                 <br/>
                                 <p className="noto-serif-resume-text-bold">The eformss system (Education Bureau)</p>
                                 <p className="noto-serif-resume-text-nojust">
-                                    • Used ReactJs to perform components development
+                                    &bull; Used ReactJs to perform components development
                                 </p>
                                 <p className="noto-serif-resume-text-nojust">
-                                    • Used React-Hook-Forms & React-Redux to perform multi-layer forms development
+                                    &bull; Used React-Hook-Forms & React-Redux to perform multi-layer forms development
                                 </p>
                                 <p className="noto-serif-resume-text-nojust">
-                                    • Used CSS to optimize system layout
+                                    &bull; Used CSS to optimize system layout
                                 </p>
                                 <p className="noto-serif-resume-text-nojust">
-                                    • Used Gitlab, Jira & SourceTree to perform DevOps & version control
+                                    &bull; Used Gitlab, Jira & SourceTree to perform DevOps & version control
                                 </p>
                                 <br/>
                                 <p className="noto-serif-resume-text-bold">The eTAX system (Inland Revenue Department)</p>
                                 <p className="noto-serif-resume-text-nojust">
-                                    • Used CSS & JavaScript to perform debugging
+                                    &bull; Used CSS & JavaScript to perform debugging
                                 </p>
                                 <p className="noto-serif-resume-text-nojust">
-                                    • Support team members with reports & documentations
+                                    &bull; Support team members with reports & documentations
                                 </p>
                             </Grid>
                             <Grid size={10}>
@@ -192,26 +195,26 @@ export default function Resume() {
                                             Kali Linux
                                         </p>
                                         <p className="noto-serif-resume-text-nojust">
-                                            • Nmap 
+                                            &bull; Nmap 
                                             <br/>
-                                            • Metasploit
+                                            &bull; Metasploit
                                             <br/>
-                                            • Wireshark
+                                            &bull; Wireshark
                                             <br/>
-                                            • Burpsuite
+                                            &bull; Burpsuite
                                         </p>
                                         <br/>
                                         <p className="noto-serif-resume-text-bold">
                                             GNS3 (Network Config)
                                         </p>
                                         <p className="noto-serif-resume-text-nojust">
-                                            • BGP
+                                            &bull; BGP
                                             <br/>
-                                            • VPN
+                                            &bull; VPN
                                             <br/>
-                                            • Firewall
+                                            &bull; Firewall
                                             <br/>
-                                            • DMZ Design
+                                            &bull; DMZ Design
                                         </p>
                                         <br/>
                                     </Grid>
@@ -221,24 +224,24 @@ export default function Resume() {
                                             AWS
                                         </p>
                                         <p className="noto-serif-resume-text-nojust">
-                                            • IAM & Cognito
+                                            &bull; IAM & Cognito
                                             <br/>
-                                            • API Gateway & WAF
+                                            &bull; API Gateway & WAF
                                             <br/>
-                                            • VPC
+                                            &bull; VPC
                                             <br/>
-                                            • Lambda & Aurora (MySQL)
+                                            &bull; Lambda & Aurora (MySQL)
                                         </p>
                                         <br/>
                                         <p className="noto-serif-resume-text-bold">
                                             Others
                                         </p>
                                         <p className="noto-serif-resume-text-nojust">
-                                            • Security Planning
+                                            &bull; Security Planning
                                             <br/>
-                                            • Pentest Reporting & Threat Modeling
+                                            &bull; Pentest Reporting & Threat Modeling
                                             <br/>
-                                            • ReactJs & Python
+                                            &bull; ReactJs & Python
                                         </p>
                                     </Grid>
                             </Grid>
@@ -260,7 +263,7 @@ export default function Resume() {
                     {previewImage ? (
                         <img
                             src={previewImage}
-                            alt="Expanded project preview"
+                            alt={previewAltText}
                             style={{ width: '100%', height: 'auto', display: 'block' }}
                         />
                     ) : null}
