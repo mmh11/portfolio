@@ -29,12 +29,11 @@ export default function ArchitectureDiagram() {
       <div className="blueprint-map">
         <svg className="blueprint-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
           <path d="M50 22 V39" />
-          <path d="M33 50 H40" />
-          <path d="M60 50 H67" />
+          <path d="M24 50 H76" />
           <path d="M50 61 V78" />
           <circle cx="50" cy="39" r="0.9" />
-          <circle cx="40" cy="50" r="0.9" />
-          <circle cx="60" cy="50" r="0.9" />
+          <circle cx="42" cy="50" r="0.9" />
+          <circle cx="58" cy="50" r="0.9" />
           <circle cx="50" cy="61" r="0.9" />
         </svg>
 
