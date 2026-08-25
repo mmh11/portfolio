@@ -311,10 +311,10 @@ export const timelineItems = [
     title: 'CyberAgency Group - MSP / Cloud / Security / IT Operations',
     description: 'Working across operational IT, cloud account setup, Microsoft 365, DNS and email security support.',
   },
+  {
+    period: 'Current Direction',
+    title: 'Cloud Security / AWS / Cybersecurity Engineering',
+    description: 'Focused on practical cloud infrastructure and security operations.',
+    variant: 'current',
+  },
 ]
-
-export const timelineDirection = {
-  title: 'Current Direction',
-  description:
-    'Cloud Security / AWS / Cybersecurity Engineering, with a focus on practical cloud infrastructure and security operations.',
-}

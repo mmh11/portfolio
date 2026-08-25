@@ -1,4 +1,21 @@
+import { useEffect, useState } from 'react'
+
 export default function ProjectCard({ project }) {
+  const [previewImage, setPreviewImage] = useState(null)
+
+  useEffect(() => {
+    if (!previewImage) return undefined
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setPreviewImage(null)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [previewImage])
+
   return (
     <article className={`project-card ${project.images ? 'project-card-featured' : ''}`}>
       <div className="project-copy">
@@ -24,7 +41,15 @@ export default function ProjectCard({ project }) {
       {project.images ? (
         <div className="project-media-grid">
           {project.images.map((image) => (
-            <img key={image.src} src={image.src} alt={image.alt} loading="lazy" />
+            <button
+              className="project-image-button"
+              key={image.src}
+              type="button"
+              onClick={() => setPreviewImage(image)}
+              aria-label={`Open full image: ${image.alt}`}
+            >
+              <img src={image.src} alt={image.alt} loading="lazy" />
+            </button>
           ))}
         </div>
       ) : null}
@@ -36,6 +61,19 @@ export default function ProjectCard({ project }) {
               <p>{highlight.text}</p>
             </section>
           ))}
+        </div>
+      ) : null}
+      {previewImage ? (
+        <div
+          className="image-lightbox"
+          onClick={() => setPreviewImage(null)}
+          role="presentation"
+        >
+          <img
+            src={previewImage.src}
+            alt={previewImage.alt}
+            onClick={(event) => event.stopPropagation()}
+          />
         </div>
       ) : null}
     </article>

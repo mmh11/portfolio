@@ -7,7 +7,6 @@ import {
   experience,
   featuredProjects,
   skillGroups,
-  timelineDirection,
   timelineItems,
   upcomingProjects,
 } from './data/portfolio'
@@ -286,7 +285,7 @@ function Timeline() {
       />
       <ol className="timeline-list">
         {timelineItems.map((item) => (
-          <li key={`${item.period}-${item.title}`}>
+          <li className={item.variant === 'current' ? 'timeline-current' : undefined} key={`${item.period}-${item.title}`}>
             <time>{item.period}</time>
             <div>
               <h3>{item.title}</h3>
@@ -295,10 +294,6 @@ function Timeline() {
           </li>
         ))}
       </ol>
-      <aside className="timeline-direction" aria-label="Current direction">
-        <span>{timelineDirection.title}</span>
-        <p>{timelineDirection.description}</p>
-      </aside>
     </section>
   )
 }
