@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 export default function ProjectCard({ project }) {
   const [previewImage, setPreviewImage] = useState(null)
@@ -6,14 +7,19 @@ export default function ProjectCard({ project }) {
   useEffect(() => {
     if (!previewImage) return undefined
 
+    const originalOverflow = document.body.style.overflow
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         setPreviewImage(null)
       }
     }
 
+    document.body.style.overflow = 'hidden'
     document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = originalOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
   }, [previewImage])
 
   return (
@@ -63,19 +69,22 @@ export default function ProjectCard({ project }) {
           ))}
         </div>
       ) : null}
-      {previewImage ? (
-        <div
-          className="image-lightbox"
-          onClick={() => setPreviewImage(null)}
-          role="presentation"
-        >
-          <img
-            src={previewImage.src}
-            alt={previewImage.alt}
-            onClick={(event) => event.stopPropagation()}
-          />
-        </div>
-      ) : null}
+      {previewImage
+        ? createPortal(
+            <div
+              className="image-lightbox"
+              onClick={() => setPreviewImage(null)}
+              role="presentation"
+            >
+              <img
+                src={previewImage.src}
+                alt={previewImage.alt}
+                onClick={(event) => event.stopPropagation()}
+              />
+            </div>,
+          document.body,
+        )
+        : null}
     </article>
   )
 }
