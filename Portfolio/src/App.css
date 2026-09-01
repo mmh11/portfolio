@@ -8,6 +8,213 @@ main,
   min-width: 0;
 }
 
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(18, 48, 63, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 48, 63, 0.032) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(24, 94, 115, 0.12), transparent 34%),
+    linear-gradient(145deg, #f8fbfa, #eef5f2 52%, #e9f0f5);
+  background-size: 38px 38px, 38px 38px, auto, auto;
+  color: var(--accent-dark);
+  pointer-events: none;
+  animation: intro-lifetime 1.66s linear forwards;
+}
+
+.intro-status {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  min-width: min(320px, calc(100vw - 48px));
+}
+
+.intro-status p {
+  min-height: 18px;
+  margin: 0;
+  color: #0f5361;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-size: clamp(0.72rem, 2.5vw, 0.82rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-align: center;
+}
+
+.intro-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 14px rgba(24, 94, 115, 0.34);
+}
+
+.intro-status-line {
+  width: 138px;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(24, 94, 115, 0.16);
+}
+
+.intro-status-line::after {
+  display: block;
+  width: 44px;
+  height: 1px;
+  background: rgba(24, 94, 115, 0.5);
+  animation: intro-line-scan 1.05s ease-out forwards;
+  content: '';
+}
+
+.intro-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.intro-particles span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(24, 94, 115, 0.48);
+  box-shadow: 0 0 12px rgba(24, 94, 115, 0.18);
+  opacity: 0;
+  transform: translate(var(--intro-x), var(--intro-y));
+  animation: intro-particle-drift 1.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--particle-index) * 18ms);
+}
+
+.intro-particles span:nth-child(1) {
+  --intro-x: -108px;
+  --intro-y: -46px;
+}
+
+.intro-particles span:nth-child(2) {
+  --intro-x: -74px;
+  --intro-y: 34px;
+}
+
+.intro-particles span:nth-child(3) {
+  --intro-x: -38px;
+  --intro-y: -78px;
+}
+
+.intro-particles span:nth-child(4) {
+  --intro-x: 54px;
+  --intro-y: -66px;
+}
+
+.intro-particles span:nth-child(5) {
+  --intro-x: 96px;
+  --intro-y: -18px;
+}
+
+.intro-particles span:nth-child(6) {
+  --intro-x: 82px;
+  --intro-y: 52px;
+}
+
+.intro-particles span:nth-child(7) {
+  --intro-x: 18px;
+  --intro-y: 86px;
+}
+
+.intro-particles span:nth-child(8) {
+  --intro-x: -112px;
+  --intro-y: 76px;
+}
+
+.intro-particles span:nth-child(9) {
+  --intro-x: -148px;
+  --intro-y: -8px;
+}
+
+.intro-particles span:nth-child(10) {
+  --intro-x: 136px;
+  --intro-y: 22px;
+}
+
+.intro-particles span:nth-child(11) {
+  --intro-x: 28px;
+  --intro-y: -112px;
+}
+
+.intro-particles span:nth-child(12) {
+  --intro-x: -24px;
+  --intro-y: 118px;
+}
+
+.intro-particles span:nth-child(13) {
+  --intro-x: 158px;
+  --intro-y: -58px;
+}
+
+.intro-particles span:nth-child(14) {
+  --intro-x: -154px;
+  --intro-y: 48px;
+}
+
+.intro-particles span:nth-child(15) {
+  --intro-x: 118px;
+  --intro-y: 98px;
+}
+
+.intro-particles span:nth-child(16) {
+  --intro-x: -82px;
+  --intro-y: -118px;
+}
+
+@keyframes intro-particle-drift {
+  0% {
+    opacity: 0;
+    transform: translate(calc(var(--intro-x) * 0.72), calc(var(--intro-y) * 0.72));
+  }
+
+  26% {
+    opacity: 0.72;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--intro-x) * 1.03), calc(var(--intro-y) * 1.03));
+  }
+}
+
+@keyframes intro-line-scan {
+  0% {
+    opacity: 0;
+    transform: translateX(-44px);
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(138px);
+  }
+}
+
+@keyframes intro-lifetime {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-status-line::after {
+    animation: none;
+  }
+}
+
 .site-header {
   position: sticky;
   top: 0;

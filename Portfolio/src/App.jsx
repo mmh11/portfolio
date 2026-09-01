@@ -1,4 +1,5 @@
-import { MotionConfig, motion as Motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, MotionConfig, motion as Motion, useReducedMotion } from 'framer-motion'
 import {
   aboutHighlights,
   certifications,
@@ -25,6 +26,8 @@ import ProjectCard from './components/ProjectCard'
 import ArchitectureDiagram from './components/ArchitectureDiagram'
 import './App.css'
 
+const introStorageKey = 'martin-hui-intro-seen'
+
 const navItems = [
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
@@ -33,12 +36,96 @@ const navItems = [
   { label: 'Contact', href: '#contact' },
 ]
 
-function Header() {
+function hasSeenIntro() {
+  try {
+    return sessionStorage.getItem(introStorageKey) === 'true'
+  } catch {
+    return true
+  }
+}
+
+function markIntroSeen() {
+  try {
+    sessionStorage.setItem(introStorageKey, 'true')
+  } catch {
+    // If storage is unavailable, keep the portfolio accessible.
+  }
+}
+
+function IntroOverlay({ onComplete }) {
+  const shouldReduceMotion = useReducedMotion()
+  const [status, setStatus] = useState('initializing')
+
+  useEffect(() => {
+    markIntroSeen()
+
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    if (shouldReduceMotion) {
+      const timer = window.setTimeout(onComplete, 220)
+      return () => {
+        document.body.style.overflow = originalOverflow
+        window.clearTimeout(timer)
+      }
+    }
+
+    const statusTimer = window.setTimeout(() => setStatus('connected'), 650)
+    const completeTimer = window.setTimeout(onComplete, 1620)
+
+    return () => {
+      document.body.style.overflow = originalOverflow
+      window.clearTimeout(statusTimer)
+      window.clearTimeout(completeTimer)
+    }
+  }, [onComplete, shouldReduceMotion])
+
+  const particles = Array.from({ length: 16 }, (_, index) => index)
+
+  return (
+    <Motion.div
+      className="intro-overlay"
+      aria-live="polite"
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: shouldReduceMotion ? 0.14 : 0.34, ease: [0.22, 1, 0.36, 1] } }}
+      onAnimationEnd={(event) => {
+        if (event.currentTarget === event.target && event.animationName === 'intro-lifetime') {
+          onComplete()
+        }
+      }}
+    >
+      {!shouldReduceMotion ? (
+        <div className="intro-particles" aria-hidden="true">
+          {particles.map((particle) => (
+            <span key={particle} style={{ '--particle-index': particle }} />
+          ))}
+        </div>
+      ) : null}
+      <div className="intro-status">
+        <span className="intro-status-dot" aria-hidden="true" />
+        <AnimatePresence mode="wait">
+          <Motion.p
+            key={status}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: shouldReduceMotion ? 0.08 : 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {status === 'initializing' ? 'INITIALIZING...' : 'MARTIN HUI // CONNECTED'}
+          </Motion.p>
+        </AnimatePresence>
+        <span className="intro-status-line" aria-hidden="true" />
+      </div>
+    </Motion.div>
+  )
+}
+
+function Header({ isIntroComplete }) {
   return (
     <Motion.header
       className="site-header"
       initial={{ opacity: 0, y: -8 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={isIntroComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: -8 }}
       transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
     >
       <a className="brand-link" href="#top" aria-label="Go to top">
@@ -56,10 +143,10 @@ function Header() {
   )
 }
 
-function Hero() {
+function Hero({ isIntroComplete }) {
   return (
     <section className="hero-section section-shell" id="top" aria-labelledby="hero-title">
-      <Motion.div className="hero-content" variants={heroGroup} initial="hidden" animate="show">
+      <Motion.div className="hero-content" variants={heroGroup} initial="hidden" animate={isIntroComplete ? 'show' : 'hidden'}>
         <Motion.p className="eyebrow" variants={fadeIn}>
           Melbourne, Australia
         </Motion.p>
@@ -97,7 +184,7 @@ function Hero() {
           </Motion.a>
         </Motion.div>
       </Motion.div>
-      <Motion.div className="hero-panel" aria-label="Professional focus areas" initial="hidden" animate="show" variants={heroVisual}>
+      <Motion.div className="hero-panel" aria-label="Professional focus areas" initial="hidden" animate={isIntroComplete ? 'show' : 'hidden'} variants={heroVisual}>
         <ArchitectureDiagram />
       </Motion.div>
     </section>
@@ -416,11 +503,25 @@ function Contact() {
 }
 
 function App() {
+  const [showIntro, setShowIntro] = useState(() => !hasSeenIntro())
+  const shouldReduceMotion = useReducedMotion()
+  const shouldShowIntro = showIntro && shouldReduceMotion === false
+  const isIntroComplete = !shouldShowIntro
+
+  useEffect(() => {
+    if (shouldReduceMotion && showIntro) {
+      markIntroSeen()
+    }
+  }, [shouldReduceMotion, showIntro])
+
   return (
     <MotionConfig reducedMotion="user">
-      <Header />
+      <AnimatePresence>
+        {shouldShowIntro ? <IntroOverlay key="intro" onComplete={() => setShowIntro(false)} /> : null}
+      </AnimatePresence>
+      <Header isIntroComplete={isIntroComplete} />
       <main>
-        <Hero />
+        <Hero isIntroComplete={isIntroComplete} />
         <About />
         <CurrentExperience />
         <PreviousExperience />
