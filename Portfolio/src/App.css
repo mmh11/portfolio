@@ -414,6 +414,27 @@ p {
   box-shadow: var(--shadow-soft);
 }
 
+.capability-card,
+.previous-experience-card,
+.project-card,
+.skill-card,
+.credential-card,
+.upcoming-card,
+.contact-card a {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.capability-card:hover,
+.previous-experience-card:hover,
+.project-card:hover,
+.skill-card:hover,
+.credential-card:hover,
+.upcoming-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(24, 94, 115, 0.2);
+  box-shadow: 0 16px 42px rgba(19, 36, 43, 0.08);
+}
+
 .about-card {
   padding: 34px;
   color: var(--text);
