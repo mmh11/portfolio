@@ -1,3 +1,4 @@
+import { MotionConfig, motion as Motion } from 'framer-motion'
 import {
   aboutHighlights,
   certifications,
@@ -10,6 +11,15 @@ import {
   timelineItems,
   upcomingProjects,
 } from './data/portfolio'
+import {
+  ctaItem,
+  fadeIn,
+  fadeUp,
+  heroGroup,
+  heroVisual,
+  staggerGroup,
+  viewportOnce,
+} from './animations/variants'
 import SectionHeader from './components/SectionHeader'
 import ProjectCard from './components/ProjectCard'
 import ArchitectureDiagram from './components/ArchitectureDiagram'
@@ -25,7 +35,12 @@ const navItems = [
 
 function Header() {
   return (
-    <header className="site-header">
+    <Motion.header
+      className="site-header"
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+    >
       <a className="brand-link" href="#top" aria-label="Go to top">
         <span className="brand-mark">MH</span>
         <span>Martin Hui</span>
@@ -37,60 +52,75 @@ function Header() {
           </a>
         ))}
       </nav>
-    </header>
+    </Motion.header>
   )
 }
 
 function Hero() {
   return (
     <section className="hero-section section-shell" id="top" aria-labelledby="hero-title">
-      <div className="hero-content">
-        <p className="eyebrow">Melbourne, Australia</p>
-        <h1 id="hero-title">Martin Hui</h1>
-        <p className="hero-role">Cybersecurity {'\u2022'} Cloud {'\u2022'} IT Infrastructure</p>
-        <p className="hero-summary">
+      <Motion.div className="hero-content" variants={heroGroup} initial="hidden" animate="show">
+        <Motion.p className="eyebrow" variants={fadeIn}>
+          Melbourne, Australia
+        </Motion.p>
+        <Motion.h1 id="hero-title" variants={fadeUp}>
+          Martin Hui
+        </Motion.h1>
+        <Motion.p className="hero-role" variants={fadeUp}>
+          Cybersecurity {'\u2022'} Cloud {'\u2022'} IT Infrastructure
+        </Motion.p>
+        <Motion.p className="hero-summary" variants={fadeUp}>
           Cybersecurity graduate with hands-on experience across AWS, Microsoft 365,
           cloud infrastructure, email security and IT operations.
-        </p>
-        <div className="hero-actions" aria-label="Primary links">
-          <a className="button primary" href="#experience">
+        </Motion.p>
+        <Motion.div className="hero-actions" variants={staggerGroup} aria-label="Primary links">
+          <Motion.a className="button primary" href="#experience" variants={ctaItem}>
             View Experience
-          </a>
-          <a className="button primary-soft" href="#projects">
+          </Motion.a>
+          <Motion.a className="button primary-soft" href="#projects" variants={ctaItem}>
             View Projects
-          </a>
-          <a className="button ghost" href="https://github.com/mmh11" target="_blank" rel="noreferrer">
+          </Motion.a>
+          <Motion.a className="button ghost" href="https://github.com/mmh11" target="_blank" rel="noreferrer" variants={ctaItem}>
             GitHub
-          </a>
-          <a
+          </Motion.a>
+          <Motion.a
             className="button ghost"
             href="https://www.linkedin.com/in/sze-ming-hui-baa202225/"
             target="_blank"
             rel="noreferrer"
+            variants={ctaItem}
           >
             LinkedIn
-          </a>
-          <a className="button ghost" href="mailto:huim13a@gmail.com?subject=Resume%20request">
+          </Motion.a>
+          <Motion.a className="button ghost" href="mailto:huim13a@gmail.com?subject=Resume%20request" variants={ctaItem}>
             Resume
-          </a>
-        </div>
-      </div>
-      <div className="hero-panel" aria-label="Professional focus areas">
+          </Motion.a>
+        </Motion.div>
+      </Motion.div>
+      <Motion.div className="hero-panel" aria-label="Professional focus areas" initial="hidden" animate="show" variants={heroVisual}>
         <ArchitectureDiagram />
-      </div>
+      </Motion.div>
     </section>
   )
 }
 
 function About() {
   return (
-    <section className="section-shell split-section" id="about" aria-labelledby="about-heading">
+    <Motion.section
+      className="section-shell split-section"
+      id="about"
+      aria-labelledby="about-heading"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
+    >
       <SectionHeader
         eyebrow="About"
         title="Applications, infrastructure and security in one view"
         description="My background has progressed from software development into cybersecurity, then into cloud infrastructure and security operations."
       />
-      <div className="about-card">
+      <Motion.div className="about-card" variants={fadeUp}>
         <p>
           I am a Melbourne-based cybersecurity graduate with a Master of Cybersecurity
           from Monash University, awarded with Distinction, and CompTIA Security+
@@ -106,8 +136,8 @@ function About() {
             <span key={item}>{item}</span>
           ))}
         </div>
-      </div>
-    </section>
+      </Motion.div>
+    </Motion.section>
   )
 }
 
@@ -115,13 +145,21 @@ function CurrentExperience() {
   const current = experience[0]
 
   return (
-    <section className="section-shell" id="experience" aria-labelledby="experience-heading">
+    <Motion.section
+      className="section-shell"
+      id="experience"
+      aria-labelledby="experience-heading"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
+    >
       <SectionHeader
         eyebrow="Current Experience"
         title="CyberAgency Group"
         description="MSP exposure across cloud operations, Microsoft 365, email security, documentation and client-facing technical support."
       />
-      <article className="current-experience-card">
+      <Motion.article className="current-experience-card" variants={fadeUp}>
         <div className="experience-heading">
           <div>
             <h3>{current.role}</h3>
@@ -132,20 +170,20 @@ function CurrentExperience() {
             <span>{current.location}</span>
           </div>
         </div>
-        <div className="capability-grid">
+        <Motion.div className="capability-grid" variants={staggerGroup}>
           {current.capabilities.map((capability) => (
-            <section className="capability-card" key={capability.title}>
+            <Motion.section className="capability-card" key={capability.title} variants={fadeUp}>
               <h4>{capability.title}</h4>
               <ul>
                 {capability.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-            </section>
+            </Motion.section>
           ))}
-        </div>
-      </article>
-    </section>
+        </Motion.div>
+      </Motion.article>
+    </Motion.section>
   )
 }
 
@@ -153,13 +191,20 @@ function PreviousExperience() {
   const previous = experience[1]
 
   return (
-    <section className="section-shell compact-section" aria-labelledby="previous-experience-heading">
+    <Motion.section
+      className="section-shell compact-section"
+      aria-labelledby="previous-experience-heading"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
+    >
       <SectionHeader
         eyebrow="Previous Experience"
         title="Professional software engineering foundation"
         description="Earlier React development experience supports the cloud and security work by adding application-level context."
       />
-      <article className="previous-experience-card">
+      <Motion.article className="previous-experience-card" variants={fadeUp}>
         <div>
           <h3>{previous.role}</h3>
           <p className="company-line">{previous.company}</p>
@@ -178,44 +223,62 @@ function PreviousExperience() {
             ))}
           </div>
         </div>
-      </article>
-    </section>
+      </Motion.article>
+    </Motion.section>
   )
 }
 
 function Projects() {
   return (
-    <section className="section-shell" id="projects" aria-labelledby="projects-heading">
+    <Motion.section
+      className="section-shell"
+      id="projects"
+      aria-labelledby="projects-heading"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
+    >
       <SectionHeader
         eyebrow="Featured Projects"
         title="Cloud, backend and security case studies"
         description="Selected work is presented by technical contribution and security thinking, not as generic coursework."
       />
-      <div className="project-grid">
+      <Motion.div className="project-grid" variants={staggerGroup}>
         {featuredProjects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+          <Motion.div key={project.title} variants={fadeUp}>
+            <ProjectCard project={project} />
+          </Motion.div>
         ))}
-      </div>
-      <div className="upcoming-card" aria-label="Currently building">
+      </Motion.div>
+      <Motion.div className="upcoming-card" aria-label="Currently building" variants={fadeUp}>
         <span>Currently Building</span>
         <h3>{upcomingProjects[0].title}</h3>
         <p>{upcomingProjects[0].description}</p>
-      </div>
-    </section>
+      </Motion.div>
+    </Motion.section>
   )
 }
 
 function Skills() {
   return (
-    <section className="section-shell" id="skills" aria-labelledby="skills-heading">
+    <Motion.section
+      className="section-shell"
+      id="skills"
+      aria-labelledby="skills-heading"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
+    >
       <SectionHeader
         eyebrow="Technical Skills"
         title="Organised by working domain"
         description="A practical view of tools and technologies used across cloud, security, IT operations and development."
       />
-      <div className="skills-grid">
+      <Motion.div className="skills-grid" variants={staggerGroup}>
         {skillGroups.map((group) => (
-          <article className="skill-card" key={group.title}>
+          <Motion.article className="skill-card" key={group.title} variants={fadeUp}>
             <h3>{group.title}</h3>
             <p className="skill-description">{group.description}</p>
             <div className="tag-row">
@@ -224,43 +287,51 @@ function Skills() {
               ))}
             </div>
             {group.note ? <p>{group.note}</p> : null}
-          </article>
+          </Motion.article>
         ))}
-      </div>
-    </section>
+      </Motion.div>
+    </Motion.section>
   )
 }
 
 function Education() {
   return (
-    <section className="section-shell" id="education" aria-labelledby="education-heading">
+    <Motion.section
+      className="section-shell"
+      id="education"
+      aria-labelledby="education-heading"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
+    >
       <SectionHeader
         eyebrow="Education & Certifications"
         title="Cybersecurity academic base with current certification"
         description="Credentials are separated from learning plans so the page stays accurate as new certifications are added."
       />
-      <div className="education-grid">
-        <div className="credential-column">
+      <Motion.div className="education-grid" variants={staggerGroup}>
+        <Motion.div className="credential-column" variants={staggerGroup}>
           {education.map((item) => (
-            <article className="credential-card" key={item.degree}>
+            <Motion.article className="credential-card" key={item.degree} variants={fadeUp}>
               <span>{item.period}</span>
               <h3>{item.degree}</h3>
               <p>{item.institution}</p>
               <p>{item.result}</p>
               {item.details ? <p className="fine-print">{item.details}</p> : null}
-            </article>
+            </Motion.article>
           ))}
-        </div>
-        <div className="credential-column">
+        </Motion.div>
+        <Motion.div className="credential-column" variants={staggerGroup}>
           {certifications.map((item) => (
-            <article className="credential-card certification-card" key={item.name}>
+            <Motion.article className="credential-card certification-card" key={item.name} variants={fadeUp}>
               <span>Certification</span>
               <h3>{item.name}</h3>
               <p>{item.issued}</p>
               <p>{item.expires}</p>
-            </article>
+            </Motion.article>
           ))}
-          <article className="credential-card learning-card">
+          <Motion.article className="credential-card learning-card" variants={fadeUp}>
             <span>Currently Learning</span>
             {currentLearning.map((item) => (
               <div key={item.name}>
@@ -268,59 +339,85 @@ function Education() {
                 <p>{item.status}</p>
               </div>
             ))}
-          </article>
-        </div>
-      </div>
-    </section>
+          </Motion.article>
+        </Motion.div>
+      </Motion.div>
+    </Motion.section>
   )
 }
 
 function Timeline() {
   return (
-    <section className="section-shell" id="timeline" aria-labelledby="timeline-heading">
+    <Motion.section
+      className="section-shell"
+      id="timeline"
+      aria-labelledby="timeline-heading"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
+    >
       <SectionHeader
         eyebrow="Career Timeline"
         title="Progression toward cloud security engineering"
         description="The timeline connects software development, cybersecurity study, cloud projects and current MSP operations experience."
       />
-      <ol className="timeline-list">
+      <Motion.ol className="timeline-list" variants={staggerGroup}>
         {timelineItems.map((item) => (
-          <li className={item.variant === 'current' ? 'timeline-current' : undefined} key={`${item.period}-${item.title}`}>
+          <Motion.li
+            className={item.variant === 'current' ? 'timeline-current' : undefined}
+            key={`${item.period}-${item.title}`}
+            variants={fadeUp}
+          >
             <time>{item.period}</time>
             <div>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </div>
-          </li>
+          </Motion.li>
         ))}
-      </ol>
-    </section>
+      </Motion.ol>
+    </Motion.section>
   )
 }
 
 function Contact() {
   return (
-    <section className="section-shell contact-section" id="contact" aria-labelledby="contact-heading">
+    <Motion.section
+      className="section-shell contact-section"
+      id="contact"
+      aria-labelledby="contact-heading"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
+    >
       <SectionHeader
         eyebrow="Contact"
         title="Open to cloud, security and infrastructure opportunities"
         description="Best contacted through email, LinkedIn or GitHub. Residential and phone details are intentionally omitted from the public site."
       />
-      <div className="contact-card">
+      <Motion.div className="contact-card" variants={staggerGroup}>
         {contactLinks.map((link) => (
-          <a key={link.label} href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>
+          <Motion.a
+            key={link.label}
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noreferrer' : undefined}
+            variants={fadeUp}
+          >
             <span>{link.label}</span>
             <strong>{link.value}</strong>
-          </a>
+          </Motion.a>
         ))}
-      </div>
-    </section>
+      </Motion.div>
+    </Motion.section>
   )
 }
 
 function App() {
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <Header />
       <main>
         <Hero />
@@ -333,7 +430,7 @@ function App() {
         <Timeline />
         <Contact />
       </main>
-    </>
+    </MotionConfig>
   )
 }
 
